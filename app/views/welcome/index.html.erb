@@ -1,0 +1,18 @@
+<%= form_tag(controller: "welcome", action: "search", method: "post") do %>
+    <%= label_tag() %>
+    <%= text_field_tag(:repos, nil, :placeholder => 'Enter the public repo name to get open issues...') %>
+    <%= submit_tag("Search", class: "button") %>
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+

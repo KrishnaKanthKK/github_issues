@@ -1,0 +1,39 @@
+<% if @response_array.length > 0 %>
+  <h1>Listing Issues</h1>
+  <table>
+    <tr>
+      <th>Title</th>
+      <th>Url</th>
+    </tr>
+    <% @response_array.each do |response| %>
+        <tr>
+          <td><%= response['title'] %></td>
+          <td><a href="<%= response['html_url'] %>" target="_blank"><%= response['html_url'] %></td>
+        </tr>
+    <% end %>
+  </table>
+
+  <div class='container'>
+    <%= form_tag(controller: "welcome", action: "next", method: "get") do %>
+        <%= submit_tag("Next", class: "button", id:"next-right") %>
+    <% end %>
+
+    <%= form_tag(controller: "welcome", action: "back", method: "get") do %>
+        <%= submit_tag("Back",  class: "button", id:"back-left") %>
+    <% end %>
+  </div>
+
+<% else %>
+    <h1>No public repo with that name, please check again</h1>
+    <h1>Try searching new repo</h1>
+    <%= form_tag(controller: "welcome", action: "search", method: "post") do %>
+        <%= label_tag() %>
+        <%= text_field_tag(:repos, nil, :placeholder => 'Enter the public repo name to get open issues...') %>
+        <%= submit_tag("Search", class: "button") %>
+    <% end %>
+<% end %>
+
+
+
+
+
