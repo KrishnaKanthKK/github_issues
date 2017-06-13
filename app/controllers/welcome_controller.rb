@@ -48,8 +48,6 @@ class WelcomeController < ApplicationController
 
 
   def request_event
-    puts GITHUB_API_ENDPOINT+@@endpoint+"/issues?page=#{@@page_number}&per_page=#{PER_PAGE}"
-
     click_event = RxRuby::Observable.just(@@page_number)
 
     request_stream = click_event
